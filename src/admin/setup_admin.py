@@ -1,6 +1,6 @@
 import os
 from flask_admin import Admin
-from models import db, Planets, Vehicles, Species, Characters
+from models import db, Planets, Species, Characters
 from admin.model_wrapper import StandardModelView
 
 
@@ -12,6 +12,5 @@ def setup_admin(app):
 
     with app.app_context():
         admin.add_view(StandardModelView(Planets, db.session))
-        admin.add_view(StandardModelView(Vehicles, db.session))
         admin.add_view(StandardModelView(Species, db.session))
         admin.add_view(StandardModelView(Characters, db.session))

@@ -10,7 +10,6 @@ from admin.setup_admin import setup_admin
 
 from models import db
 from routes.planets import register_planets_routes
-from routes.vehicles import register_vehicles_routes
 from routes.species import register_species_routes
 from routes.characters import register_characters_routes
 
@@ -47,7 +46,6 @@ def sitemap():
 
 
 register_planets_routes(app)
-register_vehicles_routes(app)
 register_species_routes(app)
 register_characters_routes(app)
 
