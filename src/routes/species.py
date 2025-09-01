@@ -56,10 +56,17 @@ def register_species_routes(app):
                     'error'] = f'Specie ID:{specie_id} doesnt exist.'
             else:
                 response_body["result"] = specie.serialize()
-
             return jsonify(response_body), 200
 
         elif request.method == "DELETE":
-            db.session.delete(specie)
-            db.session.commit()
-            return "", 204
+            delete_specie = db.session.scalar(
+                db.select(Species).filter_by(id=specie_id))
+            if not delete_specie:
+                response_body['message'] = f'Specie ID:{specie_id} wasnt found.'
+                return response_body, 404
+            else:
+                db.session.delete(delete_specie)
+                db.session.commit()
+                response_body['message'] = f'Specie ID:{specie_id} was deleted.'
+                response_body['results'] = {}
+            return response_body, 204

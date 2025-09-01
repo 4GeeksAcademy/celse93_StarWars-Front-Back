@@ -8,7 +8,7 @@ db = SQLAlchemy()
 
 class Characters(db.Model):
     __tablename__ = "characters"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(nullable=False)
     birth_year: Mapped[str] = mapped_column(String(100), nullable=False)
     gender: Mapped[str] = mapped_column(String(100), nullable=False)
@@ -30,7 +30,7 @@ class Characters(db.Model):
 
 class Planets(db.Model):
     __tablename__ = "planets"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(nullable=False)
     climate: Mapped[str] = mapped_column(String(250), nullable=False)
     population: Mapped[str] = mapped_column(String(250), nullable=False)
@@ -48,7 +48,7 @@ class Planets(db.Model):
 
 class Species(db.Model):
     __tablename__ = "species"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(nullable=False)
     designation: Mapped[str] = mapped_column(String(150), nullable=False)
     language: Mapped[str] = mapped_column(String(150), nullable=False)
